@@ -13,7 +13,7 @@ class bcolors():
 # create class for player
 class Person():
     def __init__(self, hp, mp, atk, df, magic):
-        """
+        """ Create a Profile of Individual Players
         Parameters
         ----------
         hp : num
@@ -56,9 +56,10 @@ class Person():
         self.atkh = atk + 10
         self.magic = magic
         self.action = ["Attack", "Magic"]
+
     # Function to generate damage points
     def generate_damage(self):
-        """
+        """ Create Damage Points of an attack
         Parameters
         ----------
 
@@ -70,7 +71,7 @@ class Person():
 
     # Function to generate spell damage points
     def generate_spell_damage(self, i):
-        """
+        """ Create spell damage points of an attack
         Parameters
         ----------
         i : num
@@ -85,7 +86,7 @@ class Person():
     
     # Function to generate Players take damage points
     def take_damage(self, dmg):
-        """
+        """ Create the damage that is taken by the player
         Parameters
         ----------
         dmg : num
@@ -94,7 +95,43 @@ class Person():
         ----------
          Health Point after damage : num
         """
-        self.hp - = dmg
+        self.hp -= dmg
         if self.hp < 0:
             self.hp = 0
         return self.hp
+    
+    # Function for hp
+    def get_hp(self):
+        return self.hp
+
+    # Function for max hp
+    def max_hp(self):
+        return self.maxhp
+    
+    # Function for reduce MP
+    def reduce_mp(self, cost):
+        self.mp -= cost
+
+    # Funtion which gives spell name
+    def spell_name(self, i):
+        return self.magic[i]["name"]
+
+    # Function to get the spell mp cost
+    def get_spell_mp_cost(self,i):
+        return self.magic[i]["cost"]
+    
+    # Function to choose action
+    def choose_action(self):
+        i = 1
+        print("Action")
+        for item in self.action:
+            print(str(i) + ":" + item)
+            i += 1
+    
+    # Function to choose Magic
+    def choose_magic(self):
+        i = 1
+        print("Magic")
+        for spell in self.magic:
+            print(str(i) + ":" + spell["name"] + "(cost:" , str(spell["cost"]) + ")")
+            i += 1
